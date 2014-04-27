@@ -16,11 +16,18 @@
             elem.addClass('mumf-slider');
 
             // Check to see if thumbnails exist.
-            if (elem.find('.thumbnails').length > 0) $.fn.mumfSlider.setupThumbnails(elem);
+            if (elem.find('.thumbnails').length > 0) { 
+                // Call function to set them up.
+                $.fn.mumfSlider.setupThumbnails(elem);
+            // Otherwise check if navigationThumbnails has been set.
+            } else if (elem.mumfSlider.navigationThumbnails) {
+                // Append html for default thumbs.
+                elem.append(elem.mumfSlider.navPillsHtml);
+            }
+            // END if.
 
-
-			// Add next/prev buttons.
-			$.fn.mumfSlider.addNavButtons(elem);            
+			// Add next/prev buttons if navigation is on.
+			if (elem.mumfSlider.showNavigation) $.fn.mumfSlider.addNavButtons(elem);            
 
             // Setup slides depending on transition type.
             $.fn.mumfSlider.setupSlideType(elem);			
@@ -128,8 +135,18 @@
         ,   nextSlide = slider.find('ul:first li:nth-child('+ index +')');
         
         // Set the next slide to the slider.        
-        slider.mumfSlider.nextSlide = nextSlide;         
-  
+        slider.mumfSlider.nextSlide = nextSlide;  
+
+
+        // If autoRotate is set.
+        if (slider.mumfSlider.autoRotate) {            
+            // Clear the autoRotate interval.
+            clearInterval(slider.autoRotateInterval);
+            // Call function to restart.
+            $.fn.mumfSlider.autoRotate(slider);
+        }
+        // END if autoRotate.
+
         // Call function to transition slide.
         $.fn.mumfSlider.transitionSlide(slider);      
     };
@@ -377,7 +394,10 @@
 		transition: 'fade',
 		autoRotate: true,
 		rotateDelay: 2000,
-        navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>'
+        showNavigation: true,
+        navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>',
+        navigationThumbnails: true,
+        navPillsHtml: '<div class=thumbnails><ul><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li></ul></div>'
 	};    
 
 
