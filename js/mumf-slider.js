@@ -29,16 +29,16 @@
 		    if (elem.mumfSlider.autoRotate) $.fn.mumfSlider.autoRotate(elem);	
 
 		    // Call function to add event listeners.	    
-		    $.fn.mumfSlider.addEventListeners(elem);
-
-            // Slide down the element.
-            elem.find('ul:first').slideDown(200);            
+		    $.fn.mumfSlider.addEventListeners(elem);        
 
             // Set to the first slide.
-            elem.mumfSlider.nextSlide = elem.find('li.active').length > 0 ? elem.find('li.active') : elem.find('li.first') ;
+            elem.mumfSlider.nextSlide = elem.find('li.active').length > 0 ? elem.find('li.active') : elem.find('li:first') ;
 
             // Call function to transition slide.
-            $.fn.mumfSlider.transitionSlide(elem);               
+            $.fn.mumfSlider.transitionSlide(elem); 
+
+            // Set loaded status to true.
+            elem.mumfSlider.loaded = true;              
 		});	    
 
     };
@@ -236,7 +236,7 @@
         // Call function to set active thumbnail.
         $.fn.mumfSlider.setActiveThumbnail(slider);          
     };
-
+ 
     /* Name      fadeNextSlide
      * Purpose   To fade in the next slide.
      * Params    slider      The slider to change the slide for.
@@ -245,15 +245,28 @@
     	// Get the current active.
     	var currentActive = slider.find('ul:first li.active');
 
+        // Set the height of the container to the current height.
+        slider.find('ul:first').height(slider.find('li.active').height() +'px');
+
     	// Remove all instances of active class.
     	slider.find('li.active').removeClass('active');
 
-		// Fade out the current active slide.
-		currentActive.fadeOut(function() {
-			// Fade in the slide and add active class.
-	    	slider.mumfSlider.nextSlide.fadeIn()
-	    	                .addClass('active');
-		});    
+        // If there's a current active.
+        if (slider.mumfSlider.loaded) {
+            // Fade out the current active slide.
+            currentActive.fadeOut(function() {
+                // Fade in the slide and add active class.
+                slider.mumfSlider.nextSlide.fadeIn()
+                                .addClass('active');
+            });               
+        } else {
+            // Fade in the slide and add active class.
+            slider.mumfSlider.nextSlide.css('display', 'block')
+                             .addClass('active');
+        }
+        // END if.
+
+ 
 
         // Call function to resize slider container.
         $.fn.mumfSlider.resizeSliderContainer(slider);
@@ -270,7 +283,7 @@
         ,   scrollDistance = undefined;
 
         // Remove all instances of active class.
-        slider.find('ul:first li.active').removeClass('active');
+        slider.find('li.active').removeClass('active');
 
         // If it's the first slide.
         if (slider.mumfSlider.isFirstSlide || nextIndex === 0) {
@@ -305,11 +318,19 @@
     };
 
     $.fn.mumfSlider.resizeSliderContainer = function (slider) {
-        // Get the height of the current slide.
-        var height = slider.find('ul:first li.active').height();
 
-        // Animate the slider container to the height.
-        slider.find('ul:first').animate({height: height +'px'});
+        // If the slider has not loaded.
+        if (!slider.mumfSlider.loaded) 
+        {
+            // Slide down the element.
+            slider.find('ul:first').slideDown(200);
+        } else {
+            // Get the height of the current slide.
+            var height = slider.find('ul:first li.active').height();
+            // Animate the slider container to the height.
+            slider.find('ul:first').animate({height: height +'px'});
+        }
+
     };
 
     /* Name      actualHeight
