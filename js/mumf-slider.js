@@ -32,7 +32,7 @@
 		    $.fn.mumfSlider.addEventListeners(elem);        
 
             // Set to the first slide.
-            elem.mumfSlider.nextSlide = elem.find('li.active').length > 0 ? elem.find('li.active') : elem.find('li:first') ;
+            elem.mumfSlider.nextSlide = elem.find('li.active').length > 0 ? elem.find('li.active') : elem.find('li:first');
 
             // Call function to transition slide.
             $.fn.mumfSlider.transitionSlide(elem); 
@@ -264,25 +264,33 @@
                 // Fade in the slide and add active class.
                 slider.mumfSlider.nextSlide.fadeIn()
                                 .addClass('active');
+                // Call function to resize slider container.
+                $.fn.mumfSlider.resizeSliderContainer(slider);                                
             });               
         } else {
             // Fade in the slide and add active class.
             slider.mumfSlider.nextSlide.css('display', 'block')
                              .addClass('active');
+            // Call function to resize slider container.
+            $.fn.mumfSlider.resizeSliderContainer(slider);                                 
         }
         // END if.
-
- 
-
-        // Call function to resize slider container.
-        $.fn.mumfSlider.resizeSliderContainer(slider);
+        
     };
 
     /* Name      slideNextSlide
      * Purpose   To slide in the next slide.
      * Params    slider      The slider to change the slide for.
     */ 
-    $.fn.mumfSlider.slideNextSlide = function (slider) {        
+    $.fn.mumfSlider.slideNextSlide = function (slider) {   
+
+        // If the slider has not loaded.
+        if (!slider.mumfSlider.loaded) 
+        {
+            // Slide down the element.
+            slider.find('ul:first').slideDown(200);
+        }
+
         // Get the current active, index of current slide, scrollDistance for distance to scroll to.
         var currentActive = slider.find('ul:first li.active')
         ,   nextIndex = slider.mumfSlider.nextSlide.index()
@@ -333,12 +341,12 @@
         {
             // Slide down the element.
             slider.find('ul:first').slideDown(200);
-        } else {
-            // Get the height of the current slide.
-            var height = slider.find('ul:first li.active').height();
-            // Animate the slider container to the height.
-            slider.find('ul:first').animate({height: height +'px'});
-        }
+        }            
+
+        // Get the height of the current slide.
+        var height = slider.find('ul:first li.active').height();
+        // Animate the slider container to the height.
+        slider.find('ul:first').animate({height: height +'px'});
 
     };
 
