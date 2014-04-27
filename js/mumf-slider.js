@@ -39,6 +39,7 @@
 
             // Set loaded status to true.
             elem.mumfSlider.loaded = true;              
+
 		});	    
 
     };
@@ -72,7 +73,8 @@
         });
 
         // Add listener for custom resize event.
-        slider.bind('resizeEnd', function () {
+        $(window).on('resizeEnd', function () {      
+    
             // Call function to animate to current slide.
             switch (slider.mumfSlider.transition) {
                 case 'slide':
@@ -93,7 +95,7 @@
             // Set the timeout.
             $.fn.mumfSlider.resizeTO = setTimeout(function() {
                 // Trigger after 500 ms.
-                slider.trigger('resizeEnd');
+                $(window).trigger('resizeEnd');
             }, 100);
         });
 
@@ -117,6 +119,10 @@
      *           thumb       The element of the thumbnail clicked.
     */  
     $.fn.mumfSlider.onThumbClick = function (slider, thumb) {
+        // Set global variables to defaults.                        
+        slider.mumfSlider.isFirstSlide = false;
+        slider.mumfSlider.isLastSlide = false;
+
         // Get the index, use index to get the slide.
         var index = thumb.index() + 1
         ,   nextSlide = slider.find('ul:first li:nth-child('+ index +')');
@@ -285,6 +291,9 @@
         // Remove all instances of active class.
         slider.find('li.active').removeClass('active');
 
+        // Stop any animations.
+        slider.find('ul:first').stop();
+
         // If it's the first slide.
         if (slider.mumfSlider.isFirstSlide || nextIndex === 0) {
             // Animate the scroll to the first slide.
@@ -292,7 +301,7 @@
         }
         else {            
             // Get the width of a li.slide and multiply by next index.
-            scrollDistance = slider.find('ul:first').width() * nextIndex;            
+            scrollDistance = slider.find('ul:first').width() * nextIndex;       
             // Animate the scroll using scrollDistance.
             slider.find('ul:first').animate({ scrollLeft: scrollDistance });    
         }
