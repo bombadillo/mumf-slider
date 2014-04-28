@@ -1,0 +1,170 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+/* Get fonts */
+/* Define LESS variables */
+body {
+  font-family: 'Open Sans', 'sans-serif';
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  background-color: #1e2226;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', 'sans-serif';
+}
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 30px;
+  margin: 10px 0;
+  text-align: center;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-family: 'Open Sans', 'sans-serif';
+}
+a {
+  text-decoration: none;
+}
+/* Display Classes */
+.text-center {
+  text-align: center;
+}
+.padn-tb {
+  padding: 20px 0;
+}
+/* Container, row, cols */
+.row {
+  width: 1021px;
+  clear: both;
+  margin: 0 auto;
+  position: relative;
+}
+.container,
+.wide {
+  clear: both;
+  margin: 0 auto;
+  max-width: 100%;
+  position: relative;
+}
+.container.alt {
+  background-color: #262b30;
+}
+.col {
+  float: left;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  width: 100%;
+}
+.col-4 {
+  width: 31.33333%;
+}
+/* Navigation Bar */
+.nav {
+  background-color: #262B30;
+}
+.nav .logo {
+  color: #FFFFFF;
+  float: left;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  padding-top: 0;
+}
+.nav .logo:before {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-image: none;
+  border-style: solid;
+  border-width: 0 6px;
+  content: "";
+  float: left;
+  height: 20px;
+  margin: 11px 2px 0 0;
+  width: 2px;
+}
+.nav .logo span {
+  border-left: 6px solid #FFFFFF;
+  float: left;
+  height: 20px;
+  margin-top: 11px;
+  width: 5px;
+}
+/* Sections */
+.section .title {
+  font-weight: 300;
+  font-size: 32px;
+}
+.section .service-description {
+  white-space: normal;
+  color: #77838F;
+  margin-top: 5px;
+  padding-top: 5px;
+  text-align: center;
+}
+.section .service-header {
+  font-weight: 700;
+  margin-top: 30px;
+  text-align: center;
+}
+.section .services-image {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.section .work-title {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding-top: 15px;
+  text-align: center;
+  text-decoration: none;
+}
+.section .btn {
+  background-color: #3aa9e1;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #fff;
+  padding: 10px;
+}
+.section .btn.block {
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+}
+.section .form-field {
+  background-color: #31373D;
+  border: 1px solid #31373D;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+input {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  color: #555555;
+  display: block;
+  font-size: 14px;
+  height: 38px;
+  line-height: 1.42857;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  vertical-align: middle;
+  width: 98%;
+}
