@@ -17,30 +17,30 @@ Simply add a reference to the ```mumf-slider/js/mumf-slider.js``` file within yo
 
 The HTML markup to be used for sliders must use the following structure:  
 ```html
-                <div class="slider-slide">
-                    <ul>
-                        <li class="slide">
-                            <div>                                
-                                <img src="img/1.jpg" alt="1">
-                            </div>
-                        </li>
-                        <li class="slide">
-                            <div>
-                                <img src="img/2.jpg" alt="2">
-                            </div>
-                        </li>
-                        <li class="slide">
-                            <div>
-                                <img src="img/3.jpg" alt="3">
-                            </div>
-                        </li>
-                        <li class="slide">
-                            <div>
-                                <img src="img/4.jpg" alt="4">
-                            </div>
-                        </li>                        
-                    </ul>
-                </div>
+<div class="slider-slide">
+    <ul>
+        <li class="slide">
+            <div>                                
+                <img src="img/1.jpg" alt="1">
+            </div>
+        </li>
+        <li class="slide">
+            <div>
+                <img src="img/2.jpg" alt="2">
+            </div>
+        </li>
+        <li class="slide">
+            <div>
+                <img src="img/3.jpg" alt="3">
+            </div>
+        </li>
+        <li class="slide">
+            <div>
+                <img src="img/4.jpg" alt="4">
+            </div>
+        </li>                        
+    </ul>
+</div>
 ```
 
 ## Slider Types
