@@ -2,6 +2,17 @@
 
 A basic jQuery plugin for generating sliders for HTML content and/or image galleries.
 
+## Main Features
+
+- Can be used for image galleries and HTML content.
+- Fully responsive. Both on browser resize and between slides if difference in slide height exists.
+- Easy to customize
+   - The plugin is modular in that it's functions can be overwritten and added to. For instance you can add your own slide transition effect.
+   - Custom themes can be created and used by adding them to the ```mumf-slider/themes/``` directory and adding a reference to it's CSS file.
+   - Options can be changed on slider instantiation to enable/disable auto rotation, navigation, default thumbnails, and many more.
+
+
+
 ## Project Setup
 
 What you'll need to get the project running
