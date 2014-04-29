@@ -213,7 +213,7 @@ The HTML markup to be used for image sliders with thumbnail navigation must use 
 <!--/Slider -->
 ```
 
-## Slider Types
+## Instantiating Slider
 
 - Basic slider instantiated using 
 
