@@ -24,6 +24,55 @@
 
         <!-- Slider -->
         <div class="container alt padn-tb section">
+            <div class="row big">
+                <div class="slider-main">
+                    <ul>
+                        <li class="slide">
+                            <div>                                
+                                <img src="img/1.jpg" alt="1">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/2.jpg" alt="2">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/3.jpg" alt="3">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/4.jpg" alt="4">
+                            </div>
+                        </li>                        
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!--/Slider -->        
+
+        <!-- Features -->
+        <div class="container padn-tb section features">
+            <div class="row text-center">
+                <h3 class="title">Why use this slider?</h3>
+                <ul>
+                    <li>Image gallery creation</li>
+                    <li>HTML slider creation</li>
+                    <li>Fully responsive.</li>
+                    <li>Easy to customize</li>
+                    <li>Extendable functionality</li>
+                    <li>Custom themes</li>                        
+                </ul>                
+            </div>                        
+
+        </div>
+        <!--/Features -->
+
+        <!-- Slider -->
+        <div class="container alt padn-tb section">
             <div class="row">
                 <h3 class="text-center title">Simple</h3>
                 <h3 class="text-center">A simple image slider with slide effect.</h3>
@@ -92,6 +141,65 @@
 
         <!-- Slider -->
         <div class="container alt padn-tb section">
+            <div class="row">
+                <h3 class="text-center title">Thumbnails</h3>
+                <h3 class="text-center">Add thumbnails for more advanced navigation.</h3>
+                <div class="slider-slide">
+                    <ul>
+                        <li class="slide">
+                            <div>                                
+                                <img src="img/1.jpg" alt="1">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/2.jpg" alt="2">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/3.jpg" alt="3">
+                            </div>
+                        </li>
+                        <li class="slide">
+                            <div>
+                                <img src="img/4.jpg" alt="4">
+                            </div>
+                        </li>                        
+                    </ul>
+
+                    <div class="thumbnails">
+                        <ul>
+                            <li class="">
+                                <div>                                
+                                    <img src="img/1.jpg" alt="1">
+                                </div>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <img src="img/2.jpg" alt="2">
+                                </div>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <img src="img/3.jpg" alt="3">
+                                </div>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <img src="img/4.jpg" alt="4">
+                                </div>
+                            </li>                        
+                        </ul>                    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/Slider -->        
+
+        <!-- Slider -->
+        <div class="container padn-tb section">
             <div class="row">
                 <h3 class="text-center title">HTML</h3>
                 <h3 class="text-center">You can also slide HTML (with or without images).</h3>
@@ -206,6 +314,16 @@
                 autoRotate: false,
                 transition: 'slide'
             });
+
+            // Load mumf slider.
+            $('.slider-main').mumfSlider({
+                autoRotate: true,
+                transition: 'slide',
+                rotateDelay: 1000,
+                showNavigation: false,
+                navigationThumbnails: false,
+                pauseOnHover: true
+            });            
 
         </script>
 </html>

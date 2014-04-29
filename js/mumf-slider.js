@@ -21,8 +21,8 @@
                 $.fn.mumfSlider.setupThumbnails(elem);
             // Otherwise check if navigationThumbnails has been set.
             } else if (elem.mumfSlider.navigationThumbnails) {
-                // Append html for default thumbs.
-                elem.append(elem.mumfSlider.navPillsHtml);
+                // Call function to add default navigation thumbs.
+                $.fn.mumfSlider.addDefaultThumbnails(elem);
             }
             // END if.
 
@@ -59,6 +59,27 @@
 		// Append next/prev buttons to slider.
 		slider.append(slider.mumfSlider.navButtonsHtml);
 	};
+
+    /* Name      addDefaultThumbnails
+     * Purpose   Adds default thumbnail buttons to the slider.
+     * Params    slider      The slider to change the slide for.     
+    */   
+    $.fn.mumfSlider.addDefaultThumbnails = function (slider) {
+        
+        // Append thumbnails element to slider.
+        slider.append('<div class="thumbnails"><ul></ul></div>');
+
+        // Set thumbnail element to variable.
+        var elThumbnails = slider.find('.thumbnails ul');
+
+        // Loop each of the slides.
+        slider.find('ul:first li').each(function() {
+            // Append a list item.
+            elThumbnails.append('<li class="default"><span class="nav-pill"></span></li>');
+        });
+
+    };
+    
 
     /* Name      addEventListeners
      * Purpose   Adds event listeners to the slider.
@@ -186,17 +207,25 @@
     	// Set an interval.
     	slider.autoRotateInterval = setInterval(function() {
 			// Call function to change slide.
-			$.fn.mumfSlider.changeSlide(slider, 'next');    		
+			$.fn.mumfSlider.changeSlide(slider, 'next', true);    		
     	}, slider.mumfSlider.rotateDelay);
 
     };
 
     /* Name      changeSlide
      * Purpose   To change the slide depending on the direction.
-     * Params    slider      The slider to change the slide for.
-     *     		 direction   The direction to determine which slide to transition to.
+     * Params    slider       The slider to change the slide for.
+     *     		 direction    The direction to determine which slide to transition to.
+     *           isAutoRotate Boolean of wheter is is an auto rotate change or not.
     */ 
-    $.fn.mumfSlider.changeSlide = function (slider, direction) {
+    $.fn.mumfSlider.changeSlide = function (slider, direction, isAutoRotate) {
+
+        // If it's an auto rotate change.
+        if (isAutoRotate && slider.mumfSlider.pauseOnHover) {
+            // Check to see if slider is currently being hovered over.
+            if (slider.is(':hover')) return false; 
+        }
+
     	// Get the current slide.
     	var currentSlide = slider.find('ul:first li.active');
 
@@ -243,6 +272,10 @@
      * Params    slider      The slider to change the slide for.
     */ 
     $.fn.mumfSlider.transitionSlide = function (slider) {
+
+        // If the slider is currently being hovered over.
+
+
         // Switch the transition option.
         switch (slider.mumfSlider.transition) {
             case 'fade':
@@ -397,7 +430,7 @@
         showNavigation: true,
         navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>',
         navigationThumbnails: true,
-        navPillsHtml: '<div class=thumbnails><ul><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li><li><span class=nav-pill></span></li></ul></div>'
+        pauseOnHover: true     
 	};    
 
 

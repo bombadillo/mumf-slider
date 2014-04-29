@@ -52,7 +52,7 @@
     width: 35px;
     height: 49px;
     cursor: pointer;
-    opacity: 0.3;
+    opacity: 0.04;
 	-webkit-transition: opacity 0.3s ease-in;
 	   -moz-transition: opacity 0.3s ease-in;
 	     -o-transition: opacity 0.3s ease-in;
@@ -64,11 +64,11 @@
 }
 
 .mumf-slider .prev {
-	left: -40px;
+	left: 0px;
 } 
 
 .mumf-slider .next {
-	right: -40px;
+	right: 0px;
 	background-position: 35px 0px;
 }
 
@@ -111,8 +111,11 @@
 	display: inline-block;	
 	padding: 0 5px;
 	cursor: pointer;
-	height: 30px;
 }
+
+.mumf-slider .thumbnails > ul > li.default {
+	height: 20px;
+}	
 
 .mumf-slider .thumbnails > ul > li.active img {
 	opacity: 1;

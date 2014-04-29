@@ -75,7 +75,7 @@
         // Loop each of the slides.
         slider.find('ul:first li').each(function() {
             // Append a list item.
-            elThumbnails.append('<li><span class="nav-pill"></span></li>');
+            elThumbnails.append('<li class="default"><span class="nav-pill"></span></li>');
         });
 
     };
@@ -207,17 +207,25 @@
     	// Set an interval.
     	slider.autoRotateInterval = setInterval(function() {
 			// Call function to change slide.
-			$.fn.mumfSlider.changeSlide(slider, 'next');    		
+			$.fn.mumfSlider.changeSlide(slider, 'next', true);    		
     	}, slider.mumfSlider.rotateDelay);
 
     };
 
     /* Name      changeSlide
      * Purpose   To change the slide depending on the direction.
-     * Params    slider      The slider to change the slide for.
-     *     		 direction   The direction to determine which slide to transition to.
+     * Params    slider       The slider to change the slide for.
+     *     		 direction    The direction to determine which slide to transition to.
+     *           isAutoRotate Boolean of wheter is is an auto rotate change or not.
     */ 
-    $.fn.mumfSlider.changeSlide = function (slider, direction) {
+    $.fn.mumfSlider.changeSlide = function (slider, direction, isAutoRotate) {
+
+        // If it's an auto rotate change.
+        if (isAutoRotate && slider.mumfSlider.pauseOnHover) {
+            // Check to see if slider is currently being hovered over.
+            if (slider.is(':hover')) return false; 
+        }
+
     	// Get the current slide.
     	var currentSlide = slider.find('ul:first li.active');
 
@@ -264,6 +272,10 @@
      * Params    slider      The slider to change the slide for.
     */ 
     $.fn.mumfSlider.transitionSlide = function (slider) {
+
+        // If the slider is currently being hovered over.
+
+
         // Switch the transition option.
         switch (slider.mumfSlider.transition) {
             case 'fade':
@@ -417,7 +429,8 @@
 		rotateDelay: 2000,
         showNavigation: true,
         navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>',
-        navigationThumbnails: true       
+        navigationThumbnails: true,
+        pauseOnHover: true     
 	};    
 
 

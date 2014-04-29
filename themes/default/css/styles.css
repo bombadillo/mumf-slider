@@ -25,8 +25,9 @@
 }
 
 .mumf-slider ul li > a, .mumf-slider ul li > div {	
-    width: 100%;
+    width: 98%;
     display: block;	
+    padding: 20px 0;
 }
 
 .mumf-slider ul li > a img, .mumf-slider ul li > div img {
@@ -51,7 +52,7 @@
     width: 35px;
     height: 49px;
     cursor: pointer;
-    opacity: 0.3;
+    opacity: 0.04;
 	-webkit-transition: opacity 0.3s ease-in;
 	   -moz-transition: opacity 0.3s ease-in;
 	     -o-transition: opacity 0.3s ease-in;
@@ -63,11 +64,11 @@
 }
 
 .mumf-slider .prev {
-	left: -40px;
+	left: 0px;
 } 
 
 .mumf-slider .next {
-	right: -40px;
+	right: 0px;
 	background-position: 35px 0px;
 }
 
@@ -109,7 +110,12 @@
 .mumf-slider .thumbnails > ul > li {
 	display: inline-block;	
 	padding: 0 5px;
+	cursor: pointer;
 }
+
+.mumf-slider .thumbnails > ul > li.default {
+	height: 20px;
+}	
 
 .mumf-slider .thumbnails > ul > li.active img {
 	opacity: 1;
@@ -119,8 +125,7 @@
 .mumf-slider .thumbnails > ul > li > img {
 	width: 100%;
 	border-radius: 6px;	
-	opacity: 0.33;
-	cursor: pointer;
+	opacity: 0.33;	
 	border: none;
 	-webkit-transition: opacity 0.3s ease-in, box-shadow 0.3s ease-in;
 	   -moz-transition: opacity 0.3s ease-in, box-shadow 0.3s ease-in;
