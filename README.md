@@ -215,6 +215,12 @@ The HTML markup to be used for image sliders with thumbnail navigation must use 
 
 ## Slider Types
 
-- Basic slider instantiated using ```javascript $('.slider-fade').mumfSlider();``` will create a slider
+- Basic slider instantiated using 
+
+```javascript
+$('.slider-fade').mumfSlider();
+```
+
+
 
 
