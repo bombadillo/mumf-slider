@@ -137,8 +137,70 @@ The HTML markup to be used for image sliders must use the following structure:
 </div>
 ```
 
+### Slider with thumbnails
 
+The HTML markup to be used for image sliders with thumbnail navigation must use the following structure:  
 
+```html
+<!-- Slider -->
+<div class="slider">
+    <ul>
+        <li class="slide">
+            <!-- This element level can either be a div or link element -->
+            <div>                                
+                <img src="img/1.jpg" alt="1">
+            </div>
+        </li>
+        <li class="slide">
+            <!-- This element level can either be a div or link element -->
+            <a href="http://link/to/content">
+                <img src="img/2.jpg" alt="2">
+            </a>
+        </li>
+        <li class="slide">
+            <!-- This element level can either be a div or link element -->
+            <div>
+                <img src="img/3.jpg" alt="3">
+            </div>
+        </li>
+        <li class="slide">
+            <!-- This element level can either be a div or link element -->
+            <div>
+                <img src="img/4.jpg" alt="4">
+            </div>
+        </li>                        
+    </ul>
+
+    <div class="thumbnails">
+        <ul>
+            <li class="">
+                <div>                                
+                    <img src="img/1.jpg" alt="1">
+                </div>
+            </li>
+            <li class="">
+                <div>
+                    <img src="img/2.jpg" alt="2">
+                </div>
+            </li>
+            <li class="">
+                <div>
+                    <img src="img/3.jpg" alt="3">
+                </div>
+            </li>
+            <li class="">
+                <div>
+                    <img src="img/4.jpg" alt="4">
+                </div>
+            </li>                        
+        </ul>                    
+    </div>
+</div>
+
+    </div>
+</div>
+<!--/Slider -->
+```
 
 ## Slider Types
 
