@@ -221,6 +221,20 @@ The HTML markup to be used for image sliders with thumbnail navigation must use 
 $('.slider-fade').mumfSlider();
 ```
 
+- Override default settings using
+
+```javascript
+$('.slider-fade').mumfSlider({ 
+   theme: 'custom-theme',
+   transition: 'slide',
+   autoRotate: false,
+   rotateDelay: 4000,
+   showNavigation: false,
+   navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>',
+   navigationThumbnails: false     
+});
+```
+
 
 
 
