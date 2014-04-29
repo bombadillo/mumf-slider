@@ -15,11 +15,60 @@ Simply add a reference to the ```mumf-slider/js/mumf-slider.js``` file within yo
 
 ## Markup Required before Slider Instantiation
 
+### Basic Structure of slider
+
+The basic structure of the slider is as follows:
+
+```html
+<!-- Slider container (The element you will use when instantiating slider) -->
+<div class="slider">
+
+    <!-- Used to hold all slides. -->
+    <ul>
+    
+        <!-- Single slide. -->
+        <li class="slide">
+            <!-- This element level can either be a div or link element -->
+            <div>           
+                <!-- This level contains the slide content which can be simply images, 
+                     HTML elements or a mix of the two.
+                -->
+                <img src="img/1.jpg" alt="1">
+            </div>
+        </li>
+                       
+    </ul>
+</div>
+```
+
+### Basic Structure of thumbnails
+
+If you want thumbnails to be used for navigation you can add the element within your slider element.
+
+The basic structure of the slider thumbnails is as follows:
+
+```html
+<!-- Thumbnail container -->
+<div class="thumbnails">
+    <!-- Used to hold each thumbnail -->
+    <ul>
+        <!-- Single thumbnail -->
+        <li class="">
+            <!-- Container for thumbnail -->
+            <div>                       
+                <!-- You can use HTML or a simple image element -->
+                <img src="img/1.jpg" alt="1">
+            </div>
+        </li>
+    </ul>                    
+</div>
+```
+
 ### Image Slider
 
 The HTML markup to be used for image sliders must use the following structure:  
 ```html
-<div class="slider-slide">
+<div class="slider">
     <ul>
         <li class="slide">
             <!-- This element level can either be a div or link element -->
