@@ -310,9 +310,9 @@
         // If there's a current active.
         if (slider.mumfSlider.loaded) {
             // Fade out the current active slide.
-            currentActive.fadeOut(function() {
+            currentActive.fadeOut(slider.mumfSlider.transitionSpeed, function() {
                 // Fade in the slide and add active class.
-                slider.mumfSlider.nextSlide.fadeIn()
+                slider.mumfSlider.nextSlide.fadeIn(slider.mumfSlider.transitionSpeed)
                                 .addClass('active');
                 // Call function to resize slider container.
                 $.fn.mumfSlider.resizeSliderContainer(slider);                                
@@ -355,13 +355,13 @@
         // If it's the first slide.
         if (slider.mumfSlider.isFirstSlide || nextIndex === 0) {
             // Animate the scroll to the first slide.
-            slider.find('ul:first').animate({scrollLeft: 0});
+            slider.find('ul:first').animate({scrollLeft: 0}, slider.mumfSlider.transitionSpeed);
         }
         else {            
             // Get the width of a li.slide and multiply by next index.
             scrollDistance = slider.find('ul:first').width() * nextIndex;       
             // Animate the scroll using scrollDistance.
-            slider.find('ul:first').animate({ scrollLeft: scrollDistance });    
+            slider.find('ul:first').animate({ scrollLeft: scrollDistance }, slider.mumfSlider.transitionSpeed);    
         }
 
         // Add the active class.        
@@ -425,6 +425,7 @@
 	$.fn.mumfSlider.defaults = {
 		theme: 'default',
 		transition: 'fade',
+        transitionSpeed: 500,
 		autoRotate: true,
 		rotateDelay: 4000,
         showNavigation: true,
