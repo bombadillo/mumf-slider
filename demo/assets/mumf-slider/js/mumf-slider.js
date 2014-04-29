@@ -426,7 +426,7 @@
 		theme: 'default',
 		transition: 'fade',
 		autoRotate: true,
-		rotateDelay: 2000,
+		rotateDelay: 4000,
         showNavigation: true,
         navButtonsHtml: '<div class="next direction" data-direction="next"></div><div class="prev direction" data-direction="previous"></div>',
         navigationThumbnails: true,
