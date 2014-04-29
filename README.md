@@ -17,7 +17,7 @@ A basic jQuery plugin for generating sliders for HTML content and/or image galle
 
 What you'll need to get the project running
 
-1. >= jQuery 1.9.0
+1. >= jQuery v1.9.0 for browsers other than IE < 10 which require >= jQuery v1.10.1 
 
 
 ## Deploying
