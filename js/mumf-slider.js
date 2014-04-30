@@ -434,16 +434,24 @@
     $.fn.mumfSlider.resizeSliderContainer = function (slider) {
 
         // If the slider has not loaded.
-        if (!slider.mumfSlider.loaded) 
-        {
+        if (!slider.mumfSlider.loaded && slider.mumfSlider.transition !== 'fade-concurrent') {
             // Slide down the element.
-            slider.find('ul:first').slideDown(200);
-        }            
-
-        // Get the height of the current slide.
-        var height = slider.find('ul:first li.active').height();
-        // Animate the slider container to the height.
-        slider.find('ul:first').animate({height: height +'px'});
+            slider.find('ul:first').slideDown(200, function () {
+                // Get the height of the current slide.
+                var height = slider.find('ul:first li.active').height();
+                // Animate the slider container to the height.
+                slider.find('ul:first').animate({height: height +'px'});                
+            });
+        // Otherwise if transition is fade-concurrent and the slider has not loaded.
+        } else if (slider.mumfSlider.transition === 'fade-concurrent' && !slider.mumfSlider.loaded) {
+            // Fade in the element.
+            slider.find('ul:first').fadeIn(200, function () {
+                // Get the height of the current slide.
+                var height = slider.find('ul:first li.active').height();
+                // Animate the slider container to the height.
+                slider.find('ul:first').css({height: height +'px'});                
+            }); 
+        }
 
     };
 
