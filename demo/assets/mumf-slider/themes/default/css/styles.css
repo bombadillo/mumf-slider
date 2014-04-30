@@ -154,3 +154,17 @@
 .mumf-slider .thumbnails > ul > li.active span.nav-pill {
   	background-color: #fff;
 }
+
+/* Absolute Slides */
+.concurrent-fade {
+	position: relative;
+}
+
+.concurrent-fade li.slide {
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+

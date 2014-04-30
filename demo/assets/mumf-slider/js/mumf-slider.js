@@ -177,12 +177,22 @@
      * Params    slider      The slider to change the slide for.     
     */  
     $.fn.mumfSlider.setupSlideType = function (slider) {
-        // If the transition type is slide.
-        if (slider.mumfSlider.transition === 'slide') {
-            // Set ul CSS attributes.
-            slider.find('ul:first').css({ 'overflow': 'hidden', 'white-space': 'nowrap' });
-            // Set li attributes. 
-            slider.find('li.slide').css({ 'width': '100%', 'display': 'inline-block' });
+
+        // Switch the transition type.
+        switch (slider.mumfSlider.transition) {
+            // Slide type.
+            case 'slide': 
+                // Set ul CSS attributes.
+                slider.find('ul:first').css({ 'overflow': 'hidden', 'white-space': 'nowrap' });
+                // Set li attributes. 
+                slider.find('li.slide').css({ 'width': '100%', 'display': 'inline-block' });            
+                break;
+
+            // Concurrent fade type.
+            case 'fade-concurrent': 
+                // Add the class so that the CSS classes kick in.
+                slider.addClass('concurrent-fade');
+                break;
         }
     };
 
@@ -282,6 +292,9 @@
                 // Call function to fade next slide.
                 $.fn.mumfSlider.fadeNextSlide(slider);
                 break;
+            case 'fade-concurrent': 
+                // Call function to fade next slide concurrently.
+                $.fn.mumfSlider.fadeNextSlideConcurrent(slider);
             case 'slide':
                 // Call function to fade next slide.
                 $.fn.mumfSlider.slideNextSlide(slider);
@@ -327,6 +340,40 @@
         // END if.
         
     };
+
+    /* Name      fadeNextSlideConcurrent
+     * Purpose   To fade in the next slide concurrently whilst fading out current slide.
+     * Params    slider      The slider to change the slide for.
+    */ 
+    $.fn.mumfSlider.fadeNextSlideConcurrent = function (slider) {
+        // Get the current active.
+        var currentActive = slider.find('ul:first li.active');
+
+        // Set the height of the container to the current height.
+        slider.find('ul:first').height(slider.find('li.active').height() +'px');
+
+        // Remove all instances of active class.
+        slider.find('li.active').removeClass('active');
+
+        // If there's a current active.
+        if (slider.mumfSlider.loaded) {
+            // Fade out the current active slide.
+            currentActive.fadeOut(slider.mumfSlider.transitionSpeed);
+            // Fade in the slide and add active class.
+            slider.mumfSlider.nextSlide.fadeIn(slider.mumfSlider.transitionSpeed)
+                            .addClass('active');  
+            // Call function to resize slider container.
+            $.fn.mumfSlider.resizeSliderContainer(slider);                                              
+        } else {
+            // Fade in the slide and add active class.
+            slider.mumfSlider.nextSlide.css('display', 'block')
+                             .addClass('active');
+            // Call function to resize slider container.
+            $.fn.mumfSlider.resizeSliderContainer(slider);                                 
+        }
+        // END if.
+        
+    };      
 
     /* Name      slideNextSlide
      * Purpose   To slide in the next slide.
